@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration form</title>
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <!-- <link rel="stylesheet" href="index.js"> -->
+    <script src="app.js" async></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <form method="post" autocomplete="on" id="addForm" novalidate>
+        <center><h2>Book a Call</h2></center>
+        <center><h5>Book a call slot and our representative will call you within the 1hr. of selected time.</h5></center>
+        <hr>
+        <center>
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" size="50" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" size="50" required><br>
+        <label for="mobile">Phone:</label><br>
+        <input type="tel" id="mobile" name="mobile" size="50" required placeholder="123-456-789"><br>
+        <label for="time">Time for call:</label><br>
+        <input type="date" id="time" name="time" size="50" required min="01-08-2022" max="01-01-2023" >
+        <input list="times" size="25" required placeholder="11:00" id="times">
+        <datalist id="timings">
+            <option value="10:00"></option>
+            <option value="11:00"></option>
+            <option value="12:00"></option>
+            <option value="01:00"></option>
+            <option value="02:00"></option>
+            <option value="03:00"></option>
+            <option value="04:00"></option>
+            <option value="05:00"></option>
+            <option value="06:00"></option>
+
+
+        </datalist><br>
+        <!-- <input type="time" name="time" id="time"><br> -->
+        <input type="submit" value="GET A CALL">
+        <!-- <button type="button" id="btn" onclick="alert('Congratulations your call slot booked Successfully :)')">GET A CALL</button> -->
+    </center>
+    </form>
+    <!-- <script>
+    function onsignup(event){
+        event.preventDefault();
+        console.log(event.target.name.value)
+    }
+</script> -->
+  </body>
+</html>
