@@ -23,15 +23,22 @@ function storeData(event) {
 
   console.log("******************************");
 
-  for (let n = 1; n <= 10; n++) {
-    console.log("Roshan" + " ");
-  }
+  // for (let n = 1; n <= 10; n++) {
+  //   console.log("Roshan" + " ");
+  // }
   // console.log(name1.value);
 
   // console.log("------------------------------------------------------");
 
   // console.log(e.target.name1.value);
+  // let greet = document.createElement("h1");
+  // let ok = document.createTextNode("hello " + name);
+  // greet.style.color = "green";
+  // greet.appendChild(ok);
+  // let call = document.getElementById("call");
+  // call.appendChild(greet);
 
+  // console.log(ok);
   // storing input data on local storage
 
   let user_details = {
@@ -42,44 +49,51 @@ function storeData(event) {
     times: time,
   };
 
-  // user_details.name = name1;
-  // user_details.email = this.email;
-  // user_details.mobile = this.mobile;
-  // user_details.time = this.date;
-  // user_details.times = this.times;
-
-  let greet = document.createElement("h1");
-  let ok = document.createTextNode("hello " + name);
-  greet.style.color = "green";
-  greet.appendChild(ok);
-  let call = document.getElementById("call");
-  call.appendChild(greet);
-
-  console.log(ok);
-
   let user_json_data = JSON.stringify(user_details);
 
-  // localStorage.setItem("user details", user_json_data);
+  //                   (step-1)------------storing users details in local storage
 
-  // localStorage.setItem("user details1", user_json_data);
   localStorage.setItem(user_details.email, user_json_data);
-  
-  let users;
-  
-  for (let i = 0; i < localStorage.length-1; i++) {
-    users = localStorage.getItem(localStorage.key(i));
-    console.log(JSON.parse(users));
-    // console.log(localStorage.getItem("user details"));
-  }
 
-  // localStorage.setItem("name", name1.value);
-  // console.log(localStorage.getItem("name"));
-  // localStorage.setItem("email", email.value);
-  // console.log(localStorage.getItem("email"));
-  // localStorage.setItem("mobile", mobile.value);
-  // console.log(localStorage.getItem("mobile"));
-  // localStorage.setItem("date", time.value);
-  // console.log(localStorage.getItem("time"));
-  // localStorage.setItem("time", times.value);
-  // console.log(localStorage.getItem("time"));
+  //                     (step-2)--------------------showing the user details on the screen
+
+  let users;
+  let para = document.createElement("p");
+  para.className = "par";
+  let br = document.createElement("br");
+
+  for (let i = 0; i < localStorage.length - 1; i++) {
+    users = localStorage.getItem(localStorage.key(i));
+
+    let pars = JSON.parse(users);
+
+    let cont = document.createTextNode(
+      pars.name +
+        " " +
+        pars.email +
+        " " +
+        pars.mobile +
+        " " +
+        pars.date +
+        " " +
+        pars.time
+    );
+    console.log(cont);
+    para.style.fontSize = "15px";
+    para.appendChild(cont);
+
+    call.appendChild(para);
+    console.log(para.appendChild(br));
+    para.appendChild(br);
+
+    //                    (step-3)---------------delete the existing user from the screen
+
+    let key = localStorage.key(i);
+
+    if (user_details.email == key) {
+    //   // call.removeChild(par);
+      localStorage.removeItem(key);
+      localStorage.setItem(user_details.email,JSON.stringify(user_details));
+    }
+  }
 }
