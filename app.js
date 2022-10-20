@@ -23,6 +23,9 @@ function storeData(event) {
 
   console.log("******************************");
 
+  for (let n = 1; n <= 10; n++) {
+    console.log("Roshan" + " ");
+  }
   // console.log(name1.value);
 
   // console.log("------------------------------------------------------");
@@ -32,11 +35,11 @@ function storeData(event) {
   // storing input data on local storage
 
   let user_details = {
-    name : name,
-    email : email,
-    mobile : mobile,
-    date : date,
-    times : time
+    name: name,
+    email: email,
+    mobile: mobile,
+    date: date,
+    times: time,
   };
 
   // user_details.name = name1;
@@ -45,13 +48,29 @@ function storeData(event) {
   // user_details.time = this.date;
   // user_details.times = this.times;
 
+  let greet = document.createElement("h1");
+  let ok = document.createTextNode("hello " + name);
+  greet.style.color = "green";
+  greet.appendChild(ok);
+  let call = document.getElementById("call");
+  call.appendChild(greet);
+
+  console.log(ok);
+
   let user_json_data = JSON.stringify(user_details);
 
-  localStorage.setItem("user details",user_json_data);
+  // localStorage.setItem("user details", user_json_data);
 
-  console.log(localStorage.getItem("user details"));
-
-
+  // localStorage.setItem("user details1", user_json_data);
+  localStorage.setItem(user_details.email, user_json_data);
+  
+  let users;
+  
+  for (let i = 0; i < localStorage.length-1; i++) {
+    users = localStorage.getItem(localStorage.key(i));
+    console.log(JSON.parse(users));
+    // console.log(localStorage.getItem("user details"));
+  }
 
   // localStorage.setItem("name", name1.value);
   // console.log(localStorage.getItem("name"));
